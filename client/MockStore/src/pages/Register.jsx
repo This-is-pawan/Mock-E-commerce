@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contextApi";
 
 const Register = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { isAuth, setIsAuth, handleUserExist, setExistUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [pass, setPass] = useState(true);
   const [formMode, setFormMode] = useState("register");
@@ -29,9 +29,7 @@ const Register = () => {
 
       if (data.success) {
         toast.success(data.message || "Registered successfully!");
-        setIsAuth(!isAuth);
         setFormMode("login");
-        
       } else {
         toast.error(data.message || "Register failed");
       }
@@ -55,9 +53,12 @@ const Register = () => {
 
       if (data.success) {
         toast.success(data.message || "Login successful!");
-        setIsAuth(!isAuth);
-        navigate("/dashboard");
+        setIsAuth(true);
 
+        // 🔥 Immediately fetch and update user info in context
+        await handleUserExist();
+
+        navigate("/dashboard");
       } else {
         toast.error(data.message || "Login failed");
       }
