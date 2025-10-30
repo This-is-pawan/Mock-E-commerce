@@ -106,4 +106,32 @@ export const Products = async (req, res) => {
     });
   }
 };
+// userExist
+export const UserExist = async (req, res) => { 
+  const userid = req.userid; 
+
+  try {
+ 
+    const user = await User.findById(userid).select("-password"); 
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "User fetched successfully",
+      data: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+};
 
