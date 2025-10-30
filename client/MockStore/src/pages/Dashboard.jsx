@@ -196,14 +196,34 @@ const [loading,setLoading]=useState('')
             )}
           </div>
 {/* payment */}
+{/* payment */}
 <div className="flex justify-end items-center"> 
-  <button className="w-full m-2 rounded-lg  bg-green-500 capitalize p-2" onClick={()=>{
-setLoading(' ')
-  }} >{loading==='' ?<LuLoader 
-aria-hidden="true"
-className="animate-spin"
-/>:<Link to='/payment'>pay now</Link>} </button>
+  <button
+    className={`w-full m-2 rounded-lg capitalize p-2 ${
+      cartItems.length === 0
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-green-500"
+    }`}
+    disabled={cartItems.length === 0} // ✅ disable when cart empty
+    onClick={() => {
+      if (cartItems.length > 0) {
+        setLoading(" ");
+      }
+    }}
+  >
+    {loading === "" ? (
+      <LuLoader aria-hidden="true" className="animate-spin" />
+    ) : (
+      <Link
+        to="/payment"
+        className={cartItems.length === 0 ? "pointer-events-none" : ""}
+      >
+        Pay Now
+      </Link>
+    )}
+  </button>
 </div>
+
           
         </div>
       )}
