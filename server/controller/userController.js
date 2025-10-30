@@ -23,11 +23,12 @@ export const Register = async (req, res) => {
     );
 
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    });
+  httpOnly: true,
+  secure: true,          
+  sameSite: "None",      
+  maxAge: 7 * 24 * 60 * 60 * 1000, 
+});
+
 
     res.json({ success: true, message: "Register successfully", user });
   } catch (error) {
@@ -57,11 +58,12 @@ export const Login = async (req, res) => {
     );
 
     res.cookie("token", token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+  httpOnly: true,
+  secure: true,          
+  sameSite: "None",     
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+});
+
 
     res.json({ success: true, message: "Login successful", user });
   } catch (error) {
@@ -72,10 +74,11 @@ export const Login = async (req, res) => {
 export const LogOut = async (req, res) => {
   try {
     res.clearCookie("token", {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    });
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+});
+
 
     return res.json({ success: true, message: "Logout successful" });
   } catch (error) {
