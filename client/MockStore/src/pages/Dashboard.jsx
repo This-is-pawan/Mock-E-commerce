@@ -15,7 +15,7 @@ const [loading,setLoading]=useState('')
   const [search, setSearch] = useState("");
   const [cartItems, setCartItems] = useState([]);
 
-  const url = "http://localhost:4000/api/products";
+  const url = "https://mock-commerce-backend.onrender.com/products";
 
   useEffect(() => {
     const fetchProducts = async () => {
