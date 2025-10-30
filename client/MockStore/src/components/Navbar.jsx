@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const navigate = useNavigate()
-  const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { isAuth, setIsAuth , userExist} = useContext(AuthContext);
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -24,10 +24,17 @@ const Navbar = () => {
       toast.error(error?.response?.data?.message || error.message);
     }
   };
-
+ const userInitial =
+    typeof userExist?.data?.name === "string"
+      ? userExist.data.name.charAt(0).toUpperCase()
+      : "D";
   return (
     <div className='bg-pink-200 p-3 flex items-center justify-around'>
       <h1 className='text-xl font-mono font-bold'>MockE-com</h1>
+       <p className="w-10 h-10 rounded-full bg-white text-black capitalize font-bold text-center leading-[2.5rem]">
+        {userInitial}
+      </p>
+
       <div className='bg-white text-black rounded p-2 text-sm'>
         <ul>
           {!isAuth ? (
