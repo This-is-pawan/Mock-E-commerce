@@ -22,7 +22,7 @@ const Register = () => {
 
     try {
       const { data } = await axios.post(
-        "https://mock-commerce-backend.onrender.com/register",
+        "https://mock-commerce-backend.onrender.com/api/register",
         { name, email, password },
         { withCredentials: true }
       );
@@ -48,7 +48,7 @@ const Register = () => {
 
     try {
       const { data } = await axios.post(
-        "https://mock-commerce-backend.onrender.com/login",
+        "https://mock-commerce-backend.onrender.com/api/login",
         { email, password },
         { withCredentials: true }
       );
