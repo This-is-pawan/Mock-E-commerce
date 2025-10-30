@@ -12,7 +12,7 @@ const Navbar = () => {
     e.preventDefault();
     try {
       const result = await axios.post(
-        "https://mock-commerce-backend.onrender.com/logout",
+        "https://mock-commerce-backend.onrender.com/api/logout",
         {},
         { withCredentials: true }
       );
