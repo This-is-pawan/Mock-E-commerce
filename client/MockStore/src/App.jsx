@@ -10,12 +10,21 @@ import Payment from './pages/payment';
 const App = () => {
   return (
     <div>
-       <ToastContainer
+     <ToastContainer
   position="top-center"
   autoClose={1500}
   toastClassName="custom-toast"
-  style={{ width: "auto", maxWidth: "90%" }}
+  bodyClassName="text-center"
+  style={{
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 0,
+    padding: 0,
+  }}
 />
+
 
       <div>
       <Navbar/>
