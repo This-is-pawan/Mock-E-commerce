@@ -55,7 +55,7 @@ const Register = () => {
         toast.success(data.message || "Login successful!");
         setIsAuth(true);
 
-        // 🔥 Immediately fetch and update user info in context
+        //  Immediately fetch and update user info in context
         await handleUserExist();
 
         navigate("/dashboard");
