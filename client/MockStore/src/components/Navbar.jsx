@@ -19,8 +19,8 @@ const Navbar = () => {
       );
 
       toast.success(result?.data?.message || 'Logout successfully');
-      setIsAuth(false);       // ✅ Ensure auth state becomes false
-      setExistUser(null);     // ✅ Clear user info
+      setIsAuth(false);       //auth state becomes false
+      setExistUser(null);     //  Clear user info
       navigate('/');
     } catch (error) {
       toast.error(error?.response?.data?.message || error.message);
