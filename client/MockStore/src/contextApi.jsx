@@ -17,7 +17,7 @@ const ContextApi = ({ children }) => {
       );
       setExistUser(result.data);
       setIsAuth(true);
-      console.log("User data:", result.data);
+      // console.log("User data:", result.data);
     } catch (err) {
       console.error("Error fetching user:", err.message);
       setIsAuth(false);
